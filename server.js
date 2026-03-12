@@ -8,8 +8,10 @@ app.use(cors({ origin: '*' }));
 app.use(express.json({ limit: '2mb' }));
 
 // Health check
+app.use(express.static(__dirname));
+
 app.get('/', (req, res) => {
-  res.json({ status: 'NEXUM API running', version: '1.0' });
+  res.sendFile(__dirname + '/index.html');
 });
 
 // ── AI CHAT (Groq - бесплатно) ──────────────────────────────
